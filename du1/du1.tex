@@ -17,7 +17,42 @@
 \begin{document}
 
 \section{}
+\vspace{0.5\textheight}
+\section{}
+Máme $a \in \mathbb{R}^n$. Zvolme $x \in \mathbb{R}^n$ a dokážeme, že $x^T(aa^T)x \geq 0$ neboli $aa^T \in S^n_{+}$. Platí:
+\[
+x^T(aa^T)x = (a^Tx)^T(a^Tx) = ||a^Tx||
+\]
 
+Máme tedy euklidovskou normu vektoru pro kterou platí, že je vždy nezáporná, takže $\forall x,a \in \mathbb{R}^n: x^T(aa^T)x \geq 0 \iff ||a^Tx|| \geq 0$.
 
+\section{}
+\begin{enumerate}[label=\alph*)]
+\item Množina je jednotková kružnice. Tato množina není konvexní, jelikož například bod $0,5 \cdot \begin{pmatrix}1 \\ 0\end{pmatrix} + 0,5 \cdot \begin{pmatrix}-1 \\ 0\end{pmatrix} = \begin{pmatrix}0 \\ 0\end{pmatrix}$ je konvexní kombinací bodů z této množiny, ale není na jednotkové kružnici. 
+\item Z podmínky lze vyvodit, že každý bod v této množině musí mít kladné obě souřadnice neboli je to množina $\mathbb{R}^2_{++}$. Tato množina je konvexní, jelikož to je vlastně 1. kvadrant bez os. Množina není konvexní kužel, jelikož neobsahuje počátek.
+\item Tato množina popisuje poloprostor, který obsahuje počátek. Je to opět konvexní množina. Obsahuje ale například bod $ \begin{pmatrix}\frac{2}{10} & \frac{-1}{10} & \frac{7}{10}\end{pmatrix}^T$, což je $\frac{1}{10}$ násobek bodu ze zadání. Tudíž leží na stejné přímce, která prochází počátkem, ale daný poloprostor jí neobsahuje celou. Takže to není kužel.
+\item Množina není konvexní. Matice $\begin{pmatrix}1 & 0\\ 0 & 1\end{pmatrix}, \begin{pmatrix}-1 & 0\\ 0 & -1\end{pmatrix}$ jsou prvky dané množiny, ale jejich konvexní kombinace
+\[
+0,5\cdot \begin{pmatrix}1 & 0\\ 0 & 1\end{pmatrix} + 0,5 \cdot \begin{pmatrix}-1 & 0\\ 0 & -1\end{pmatrix} = \begin{pmatrix}0 & 0\\ 0 & 0\end{pmatrix}
+\]
+Má zřejmě nulový determinant.
+\end{enumerate}
+
+\section{}
+\begin{enumerate}
+\item Nechť $x,y \in \sqrt{2}A \implies \exists a_1,a_2 \in A: x=\sqrt{2}a_1, y = \sqrt{2}a_2$. Zvolme $\lambda \in [0,1]$ a dokážeme, že $\lambda x + (1-\lambda)y \in \sqrt{2}A \iff \exists c \in A : \lambda x + (1-\lambda)y = \sqrt{2}c$.
+\[
+\lambda x + (1-\lambda)y = \lambda \sqrt{2}a_1 + (1-\lambda)\sqrt{2}a_2 = \sqrt{2}(\lambda a_1 + (1-\lambda)a_2)
+\]
+$a_1,a_2 \in A$, kde $A$ je konvexní, takže položme $c \coloneqq \lambda a_1 + (1-\lambda)a_2 \in A$.
+\item Nechť $x,y \in A+B \implies \exists a_1,a_2 \in A, b_1,b_2: x=a_1+b_1, y = a_2+b_2$. Zvolme $\lambda \in [0,1]$ a dokážeme, že $\lambda x + (1-\lambda)y \in A+B \iff \exists c_1 \in A, c_2 \in B: \lambda x + (1-\lambda)y = c_1 + c_2$.
+\[
+\lambda x + (1-\lambda)y= \lambda (a_1+b_1) + (1-\lambda)(a_2+b_2) = (\lambda a_1 + (1-\lambda)a_2) + (\lambda b_1 + (1-\lambda)b_2)
+\]
+$A,B$ jsou konvexní množiny, takže $\lambda a_1 + (1-\lambda)a_2 \in A, \lambda b_1 + (1-\lambda)b_2 \in B$. Položme $c_1 \coloneqq \lambda a_1 + (1-\lambda)a_2, c_2 \coloneqq \lambda b_1 + (1-\lambda)b_2$.
+
+\section{}
+Ze zadání plyne, že se nám nikdy nevyplatí kupovat $C$ za 80kč, když si jí můžeme vyrobit za 30kč ($3B = 1C)$. Označme $x_1$ počet kg suroviny $A$, které nakoupíme, $x_2$ počet kg suroviny $B$, které nakoupíme a $x_3$ počet kg suroviny $D$, které nám zbydou po reakcích. Definujme funkci $f(x_1,x_2,x_3) = 3x_1+10x_2+x_3$, která nám počítá celkovou cenu výroby. Chceme minimalizovat $f$.
+\end{enumerate}
 
 \end{document}
