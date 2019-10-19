@@ -1,0 +1,41 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{indentfirst} %indentace prvního odstavce
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[czech]{babel}
+\usepackage{mathdots}
+\usepackage{slashbox}
+
+\begin{document}
+
+\section{}
+Položme $y \coloneqq \begin{pmatrix} 0 \\ 0\end{pmatrix}$. Podmínky $x \preceq y, y \preceq x$ se nám tedy zjednodušily z definice na $x,-x \in \mathbb{R}^2_+$. My chceme opak neboli $x \in \mathbb{R}^2: x,-x \not\in \mathbb{R}^2_+$. Takže jedna souřadnice vektoru $x$ musí být $> 0$ a druhá $< 0$. Vyhovuje tedy například vektor $x \coloneqq \begin{pmatrix} 1 \\ -1\end{pmatrix}$.
+
+\section{}
+Podmínku můžeme alternativně vyjádřit: $x,-x \succeq_K 0 \iff x,-x \in K$.\\
+$\Rightarrow$: Máme tedy $x$ tž. $x,-x \in K$. $K$ je kužel, takže platí: \\$\forall \lambda \in [0,\infty]: \lambda x \in K, \lambda (-x) \in K \iff \forall \lambda \in \mathbb{R}: \lambda x \in K$. Pokud $x \neq 0$, tak $\{\lambda x, \forall \lambda \in \mathbb{R}\}$ je přímka. $K$ nesmí obsahovat přímky, takže musí platit $x=0$.\\
+$\Leftarrow$: $x=0 \implies x=-x=0$. $K$ je kužel, neboli obsahuje počátek ($x,-x \in K)$.\\
+
+\section{}
+$f$ je afinní neboli $\exists A \in \mathbb{R}^{n \times k}, b \in \mathbb{R}^n, \forall x \in \mathbb{R}^k: f(k) = Ak+b$. Chceme dokázat, že $f^{-1}(X)$ je konvexní. Tedy zvolme $\lambda \in [0,1]$, $c,d \in f^{-1}(X)$ a ukážeme $\lambda c + (1-\lambda)d \in f^{-1}(X) \iff \exists p \in X: f(\lambda c + (1-\lambda)d)=p$. Jelikož $c,d \in f^{-1}(X) \implies \exists k,l \in X: f(c)=k, f(d)=l$. $X$ je konvexní, takže $\lambda k + (1-\lambda)l \in X$.
+\begin{gather*}
+f(\lambda c + (1-\lambda)d) \stackrel{def. zobr.}{=} A(\lambda c + (1-\lambda)d)+b = \lambda Ac + Ad - \lambda Ad + b = \\
+= \lambda Ac + Ad - \lambda Ad + b + \lambda b - \lambda b = (Ad+b)+\lambda(Ac-Ad+b-b) \stackrel{substituce}{=} \\
+\stackrel{substituce}{=} l + \lambda(k-l) = \lambda k + (1-\lambda)l \in X
+\end{gather*}
+Našli jsme $p \coloneqq \lambda k + (1-\lambda)l$.
+
+\section{}
+Z lineární algebry víme, že každá reálná pozitivně semidefinitní matice je ortogonálně diagonalizovatelná a má nezáporná vlastní čísla. Pokud tedy $A \in \mathbb{R}^{n \times n}, A \in S^n_+$, tak existují matice $R,D \in \mathbb{R}^{n \times n}$ takové, že $R$ je ortonormální a $D$ je diagonální s nezápornými prvky na hlavní diagonále a platí $A = RDR^T$. Z definice násobení matic vidíme, že jako $\lambda_i$ položíme $i$. prvek na diagonále $D$ a jako $v_i$ položíme $i$. řádek matice $R$.
+
+\section{}
+
+\end{document}
