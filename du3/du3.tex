@@ -36,5 +36,79 @@ $[0,\infty)$ je konvexní množina. Takže $g$ je konvexní funkce na $[0,\infty
 
 
 \section{}
+$\Rightarrow$: Zvolme $\begin{pmatrix} x_1 \\ t_1\end{pmatrix}, \begin{pmatrix} x_2 \\ t_2\end{pmatrix} \in \{\begin{pmatrix} x \\ t\end{pmatrix}: t \geq f(x), x \in dom(f), t \in \mathbb{R} \} \eqqcolon E$, $\theta \in [0,1]$ a dokážeme, že $\theta \begin{pmatrix} x_1 \\ t_1\end{pmatrix} + (1-\theta) \begin{pmatrix} x_2 \\ t_2\end{pmatrix} \in E$.
+\begin{gather*}
+\theta \begin{pmatrix} x_1 \\ t_1\end{pmatrix} + (1-\theta) \begin{pmatrix} x_2 \\ t_2\end{pmatrix} = \begin{pmatrix} \theta x_1 + (1-\theta) x_2 \\ \theta t_1 + (1-\theta) t_2\end{pmatrix}
+\end{gather*}
+Chceme dokázat, že 
+\begin{enumerate}
+\item $\theta x_1 + (1-\theta) x_2 \in dom(f)$
+\item $\theta t_1 + (1-\theta) t_2 \geq f(\theta x_1 + (1-\theta) x_2)$
+\end{enumerate}
+1. plyne z toho, že $f$ je konvexní (tedy i $dom(f)$ je konvexní).\\
+2. plyne z toho, že máme
+\begin{gather*}
+t_1 \geq f(x_1)\\
+t_2 \geq f(x_2)
+\end{gather*}
+a konvexnosti $f$ viz
+\[
+f(\theta x_1 + (1-\theta) x_2) \leq \theta f(x_1) + (1-\theta)f(x_2) \leq \theta t_1 + (1-\theta) t_2
+\]
+$\Leftarrow$:
+Zvolme $x_1, x_2 \in dom(f), \theta \in [0,1]$. Uvažujme body $\begin{pmatrix} x_1 \\ f(x_1)\end{pmatrix}, \begin{pmatrix} x_2 \\ f(x_2)\end{pmatrix}$. Tedy body jsou v množině $E$ (epigraf) z definice. Předpokládáme, že epigraf je konvexní množina, takže:
+\begin{gather*}
+\begin{pmatrix} \theta x_1 + (1-\theta) x_2 \\ \theta f(x_1) + (1-\theta) f(x_2)\end{pmatrix} \in E \implies\\
+\theta x_1 + (1-\theta) x_2 \in dom(f)\\
+\theta f(x_1) + (1-\theta) f(x_2) \geq f( x_1 + (1-\theta) x_2)
+\end{gather*}
+Takže $f$ je konvexní funkce.
 
+\section{}
+Konvexnost dokážeme pomocí hesiánu. Zřejmě $dom(f) = \mathbb{R}^2$ (konvexní množina).
+\begin{gather*}
+\frac{\partial^2 f}{\partial^2 x} =  \frac{\partial^2 f}{\partial^2 y} = \frac{e^{x+y}}{(e^x+e^y)^2}\\
+\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y \partial x} = -\frac{e^{x+y}}{(e^x+e^y)^2} \implies
+H(f) = \frac{1}{(e^x+e^y)^2}
+\begin{pmatrix}
+e^{x+y} & -e^{x+y}\\
+-e^{x+y} & e^{x+y}
+\end{pmatrix}\\
+\forall x,y \in \mathbb{R}: \frac{1}{(e^x+e^y)^2} \geq 0 \implies
+|H(f)| \geq 0 \iff 
+\begin{vmatrix}
+e^{x+y} & -e^{x+y}\\
+-e^{x+y} & e^{x+y}
+\end{vmatrix} \geq 0 \implies\\
+\begin{vmatrix}
+e^{x+y} & -e^{x+y}\\
+-e^{x+y} & e^{x+y}
+\end{vmatrix} = 2(e^{x+y})^2 \implies \forall x,y \in \mathbb{R}: |H(f)| \geq 0
+\end{gather*}
+Zároveň $\forall x,y \in \mathbb{R}: e^{x+y} \geq 0$, takže $H(f)$ je pozitivně semidefinitní, takže $f$ je konvexní na $\mathbb{R}^2$.
+
+\section{}
+Pokud budeme uvažovat jeden den, tak produktivitu trpaslíků spočítáme jednoduše jako $\sum^{21}_{i=1} a_i x_i = d_i$, kde $a_i \in \{0,1\}$ značí, zda byl $i$. trpaslík přítomen, $x_i$ bude jeho produktivita v ten den a $d_i$ je vytěžené zlato v tento den. Pokud tedy máme informace jen o jednom dni, tak nám výjde, že každý přítomný trpaslík je stejně výkonný. Pokud tedy sestavíme soustavu rovnic pro všechny dny, tak máme soustavu rovnic:
+\begin{gather*}
+a_{1,1}x_1 + \dots + a_{1,21}x_{21} = d_1\\
+\vdots\\
+a_{30,1}x_1 + \dots + a_{30,21}x_{21} = d_{30}
+\end{gather*}
+kde $a_{i,j}$ značí přítomnost $j$. trpaslíka v $i$. den, jinak $x_i, d_i$ mají stejný význam. Soustavu tedy můžeme vyjádřit maticově a vyřešit pomocí metody nejmenších čtverců. Metoda nejmenších čtverců nám dá nejlepší aproximaci produktivity trpaslíků, kterou z dostupných dat můžeme určit. Produktivitou myslíme průměrný počet vytěženého zlata za den.
+
+\section{}
+\begin{enumerate}[label=\alph*)]
+\item Chceme dokázat konkávnost $S$, takže stačí dokázat konvexnost $f \coloneqq -S$. $f: (0,1)^n \rightarrow \mathbb{R}$ na $dom(S)$. Zřejmě platí $dom(S) \subset (0,1)^n$. $f$ můžeme vyjádřit takto:
+\begin{gather*}
+f(x) = \sum^{n}_{i=1} g_i(x_i) \text{, kde } g_i(t): (0,1) \rightarrow \mathbb{R}, g_i(t) = tln(t)
+\end{gather*}
+$g_i$ je tedy funkce jedné proměnné. $\forall t \in (0,1): g''(t)=\frac{1}{t} \geq 0$. $g_i$ je tedy konvexní na $(0,1)$. Z přednášky víme, že součet konvexních funkcí je konvexní.\\
+Nyní dokážeme konvexitu $dom(S)$. Zvolme $x,y \in dom(S) \subset (0,1)^n, \theta \in [0,1]$. Víme, že $\sum^n_{i=1} x_i = \sum^n_{i=1} y_i = 1$. Chceme dokázat, že $\sum^n_{i=1} (\theta x + (1-\theta)y)_i = 1$. To, že $\forall i: \theta x_i + (1-\theta) y_i \in (0,1)$ plyne ze zřejmé konvexnosti $(0,1)$, tedy $\theta x + (1-\theta)y \in (0,1)^n$. 
+\begin{gather*}
+\sum^n_{i=1} (\theta x + (1-\theta)y)_i = \sum^n_{i=1}(\theta x_i + (1-\theta)y_i)  = \sum^n_{i=1}(\theta x_i) + \sum^n_{i=1}((1-\theta)y_i) = \\
+= \theta \sum^n_{i=1} x_i + (1-\theta)\sum^n_{i=1} y_i = \theta 1 + (1-\theta)1 = 1
+\end{gather*}
+Takže $dom(S)$ je konvexní $\implies f$ je konvexní funkce na $dom(S) \implies$ S je konkávní.
+\item email
+\end{enumerate}
 \end{document}
