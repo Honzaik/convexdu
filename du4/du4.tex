@@ -1,0 +1,43 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{indentfirst} %indentace prvního odstavce
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[czech]{babel}
+\usepackage{mathdots}
+\usepackage{slashbox}
+
+\begin{document}
+
+\section{}
+Funkce $f$ je definována na množině $S = \{(x,y)^T \in \mathbb{R}^2: 3x+7y>10\}$ (kvůli logaritmu), což je konvexní množina (polorovina). Konvexitu funkce $f$ dokážeme, tak, že postupně dokážeme konvexitu 3 funkcí, ze kterých je $f$ složena ($f = f_1 + f_2 + f_3$). Víme, že součet konvexních funkcí je konvexní funkce, takže to stačí.\\
+$f_1(x,y) = -57log(3x+7y-10)$: $-57log(x)$ je konvexní a neklesající, $g(x,y) = 3x+7y-10$ je konkávní (i konvexní) funkce (hesián je nulová matice). Z přednášky víme, že složením těchto funkcí dostaneme konvexní funkci.\\
+$f_2(x,y) = 5x^2-xy+y^2$. Hesián je $\begin{pmatrix}
+5 & -1\\
+-1 && 1
+\end{pmatrix}$
+což je pozitivně semidefinitní matice. Takže $f_2$ je konvexní.
+$f_3(x,y) = \text{ max. vl. číslo } \begin{pmatrix}
+x & y\\
+y & x+y
+\end{pmatrix}$. Charakteristický polynom této matice je $p(\lambda)=\lambda^2 + \lambda(-2x-y) + (x^2-y^2)$. Tato kvadratická rovnice má 2 řešení neboli nám dává 2 funkce ($g_1,g_2$)v proměnných $x,y$: $g_1(x,y)=x-\frac{\sqrt{5}}{2}y-\frac{y}{2}, g_2(x,y)=x+\frac{\sqrt{5}}{2}y-\frac{y}{2}$. Tyto funkce jsou konvexní, jelikož jejich hesián je nulová matice. Funkci $f_3$ můžeme tedy vyjádřit takto $f_3(x,y)=max\{g_1(x,y),g_2(x,y)\}$. Z přednášky víme, že $f_3$ je konvexní, pokud $g_1,g_2$ jsou konvexní, což jsme dokázali.\\
+Dokázali jsme tedy, že $f$ je konvexní funkce.
+
+\section{}
+$f(x,y,z) = g_1(x)g_2(y)g_3(z)$. Pro kladnost $f$ na $\mathbb{R}^3_{++}$ stačí dokázat kladnost všech $g_i$ na $\mathbb{R}_{++}$. První derivace funkcí $g_i$ jsou tvaru $e^{-x}$. Tato funkce je zřejmě kladná $\forall x \in \mathbb{R}$. Takže $g_i$ jsou ryze rostoucí na svém definičním oboru. Pro všechny $g_i$ platí, že v bodě $0$ mají hodnotu $1-1=0$. Z toho, že jsou $g_i$ ryze rostoucí můžeme tedy usoudit, že $\forall x \in \mathbb{R}_{++}: g_i(x)>0 \implies \forall (x,y,z) \in \mathbb{R}^3_{++}: f(x,y,z)>0$.\\
+Z vlastnosti logaritmů platí:
+\begin{gather*}
+log(f(x,y,z))=log((1-e^x)(1-e^{2y})(1-e^{5z}))=log(1-e^x)+log(1-e^{2y})+log(1-e^{5z})
+\end{gather*}
+Funkce $1-e^x, 1-e^{2y}, 1-e^{5z}$ jsou konkávní, jelikož $e^x$ je konvexní $\implies$ $-e^x$ je konkávní a jsou posunuté akorát o konstantu, což nezmění konkávnost. $log$ je konkávní funkce a je neklesající. Z věty z přednášky tedy víme, že všechny sčítance jsou konkávní, tím pádem i součet ($log(f)$) těchto funkcí je konkávní. Tedy $f$ je log-konkávní.
+
+\section{}
+
+\end{document}
