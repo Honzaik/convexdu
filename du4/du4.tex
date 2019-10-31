@@ -39,5 +39,14 @@ log(f(x,y,z))=log((1-e^x)(1-e^{2y})(1-e^{5z}))=log(1-e^x)+log(1-e^{2y})+log(1-e^
 Funkce $1-e^x, 1-e^{2y}, 1-e^{5z}$ jsou konkávní, jelikož $e^x$ je konvexní $\implies$ $-e^x$ je konkávní a jsou posunuté akorát o konstantu, což nezmění konkávnost. $log$ je konkávní funkce a je neklesající. Z věty z přednášky tedy víme, že všechny sčítance jsou konkávní, tím pádem i součet ($log(f)$) těchto funkcí je konkávní. Tedy $f$ je log-konkávní.
 
 \section{}
+Pro $n=1$ je problém triviální. Pro $n=2$ jsme to dokázali v minulém úkolu. Nyní předpokládejme, že $f_n(x_1,\dots,x_n)=ln(exp(x_1)+\dots+exp(x_n))$ je konvexní a dokážeme, že $f_{n+1}=ln(exp(x_1)+\dots,exp(x_{n+1}))$ je konvexní funkce. Učiníme pozorování, že platí $f_{n+1}(x_1,\dots,x_{n+1})=f_2(f_n(x_1,\dots,x_n),x_{n+1})$. Pozorování platí díky tomu, že funkce $ln$ a $exp$ jsou navzájem inverzní. Takže:
+\begin{gather*}
+f_{n+1}(x_1,\dots,x_{n+1})=f_2(f_n(x_1,\dots,x_n),x_{n+1}) = ln(exp(f_n(x_1,\dots,x_n))+exp(x_{n+1}))=\\
+=ln(exp(f_n(x_1,\dots,x_n))+exp(x_{n+1}))=ln(exp(ln(exp(x_1)+\dots+exp(x_n)))+exp(x_{n+1}))=\\
+=ln(exp(x_1)+\dots+exp(x_n)+exp(x_{n+1}))
+\end{gather*}
+Nyní můžeme použít větu z přednášky o "skládání konvexních funkcí". $f_2$ je konvexní a neklesající v každé souřadnici, protože pokud zafixujeme $y \in \mathbb{R}$ a uvažujeme funkcí $\forall x\in \mathbb{R}: f_2(x,y)$ jako funkci jedné proměné, tak její derivace je $\forall x \in \mathbb{R}:\frac{exp(x)}{exp(x)+exp(y)}$. Tento zlomek je vždy kladný, jelikož $exp(x)$ je kladná funkce, takže $f_2$ je neklesající v souřadnici $x$. Analogicky to lze dokázat pro druhou souřadnici. Dále víme, že obě vnitřní funkce $f_n$ (z indukčního předpokladu) a $x_{n+1}$ (zřejmě) jsou konvexní. Z věty tedy víme, že i $f_{n+1}$ je konvexní.
+
+\section{}
 
 \end{document}
