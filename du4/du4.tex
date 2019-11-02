@@ -48,5 +48,30 @@ f_{n+1}(x_1,\dots,x_{n+1})=f_2(f_n(x_1,\dots,x_n),x_{n+1}) = ln(exp(f_n(x_1,\dot
 Nyní můžeme použít větu z přednášky o "skládání konvexních funkcí". $f_2$ je konvexní a neklesající v každé souřadnici, protože pokud zafixujeme $y \in \mathbb{R}$ a uvažujeme funkcí $\forall x\in \mathbb{R}: f_2(x,y)$ jako funkci jedné proměné, tak její derivace je $\forall x \in \mathbb{R}:\frac{exp(x)}{exp(x)+exp(y)}$. Tento zlomek je vždy kladný, jelikož $exp(x)$ je kladná funkce, takže $f_2$ je neklesající v souřadnici $x$. Analogicky to lze dokázat pro druhou souřadnici. Dále víme, že obě vnitřní funkce $f_n$ (z indukčního předpokladu) a $x_{n+1}$ (zřejmě) jsou konvexní. Z věty tedy víme, že i $f_{n+1}$ je konvexní.
 
 \section{}
-
+\begin{enumerate}[label=\alph*)]
+\item Náš kvadratický program bude mít tento popis:
+\begin{gather*}
+min \sum_{i=0}^{98} \Delta_{\frac{i}{10}}^2\\
+\text{s.t. } i=1,2,\dots,10:\\
+y_i \leq b_i \land -y_i \leq -a_i\\
+i=0.1,0.2,\dots, 10:\\
+y_i = y_{i-0.1}+0.1v_{i-0.1} \land  v_i = v_{i-0.1}+\Delta_{i-0.1}\\
+v_0 = 0, y_0 = 0
+\end{gather*}
+Hodnoty $a_i,b_i$ máme zadané. $y_i$ značí polohu rakety v čase $i$ ve směru osy $y$. Hodnota $x_i$ neboli poloha rakety v čase $i$ ve směru osy $x$ nás vůbec nemusí zajímat, jelikož nijak neovlivňuje hodnoty $y_i,v_i,\Delta_i$. Hodnoty stačí minimalizovat hodnoty $\Delta_i$ pouze od $i=0$ do $i=9.8$, protože poslední hodnotu $y_i$, kterou potřebujeme ovlivnit je $y_{10}$ a ta závisí na $v_{9.9}$, které závisí na $\Delta_{9.8}$. Zbylé hodnoty můžou být 0, jelikož už s raketou nepotřebujeme manipulovat. Program zřejmě minimalizuje palivo a zajístí, že raketa proletí všemi překážkami.
+\item
+\item Například rovnou první testovací body, což jsem náhodně vymyslel splnily tuto podmínku. Většina $y_t$ byla právě na hranicích překážek.
+\begin{gather*}
+\text{Pozice bariér: } (5,6), (7,8), (6,8), (8,9), (4,9), (9,10), (5,8), (1, 3), (5,6), (0,1)\\
+\text{Hodnoty $y_i$ na místech bariér: } 5.0, 8.0, 8.0, 8.23, 9.0, 9.0, 5.29, 3.0, 5.0, 1.0
+\end{gather*}
+Viz email
+\item Záleží co znamená \uv{bezpečnější}. Pokud budeme předpokládát, že bezpečnější trajektorie je ta, která se k hranicím bariér nepřiblíží více než $10^{-2}$, tak stačí v programu z a) modifikovat nerovnosti s $a_i, b_i$ na:
+\begin{gather*}
+i=1,2,\dots,10:\\
+y_i \leq b_i - 0.01\\
+-y_i \leq -(a_i+0.01)\\
+\end{gather*}
+Nevýhodou samozřejmě je větší spotřeba paliva. Pokud budeme uvažovat body z c) bez tohoto omezení, tak spotřebujeme zhruba 26.27 paliva. Po přidání omezení na bezpečnější trajektorii spotřebujeme 26.53 paliva.
+\end{enumerate}
 \end{document}
