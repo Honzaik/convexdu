@@ -1,0 +1,52 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{indentfirst} %indentace prvního odstavce
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[czech]{babel}
+\usepackage{mathdots}
+\usepackage{slashbox}
+
+\begin{document}
+
+\section{}
+Z lineární algebry víme, že lineární zobrazení je jednoznačně určeno obrazy bázových prvků. Bází prostoru $S^n$ je například $\frac{n(n+1)}{2}$ symetrických matic, které mají právě na 2 místech (symetricky) hodnotu 1, pokud jsou tyto místa mimo diagonálu, nebo matice s jednou jedničkou na diagonále. Každou symetrickou matici dokážeme vyjádřit jako linární kombinaci těchto matic. Bází prostoru $S^2$ by například byly tyto matice:
+\[
+\begin{pmatrix}
+1 & 0\\
+0 & 0
+\end{pmatrix}, 
+\begin{pmatrix}
+0 & 0\\
+0 & 1
+\end{pmatrix},
+\begin{pmatrix}
+0 & 1\\
+1 & 0
+\end{pmatrix}
+\]
+Položme $k \coloneqq \frac{n(n+1)}{2}$. Pro $i=1,\dots,k: B_i$ budou prvky báze popsané výše. Pro libovolné $X \in S^n$ tedy existují $i=1,\dots,k: a_i \in \mathbb{R}: X = \sum_{i=1}^k a_iB_i$. $f$ je lineární, takže $f(X)=f(\sum_{i=1}^k a_iB_i)=\sum_{i=1}^k a_if(B_i)$. Označme $i=1,\dots,k: b_i = f(B_i) \in \mathbb{R}$. Z toho, jak je zvolena báze, je zřejmé, že každý prvek $a_i$ je roven nějakému prvku $X_{i,j}=X_{j,i}$.\\
+Víme, že platí $\forall C,X \in S^n: Tr(CX)= \sum_{i=1}^{n} \sum_{j=1}^{n} C_{i,j}X_{i,j}$. Protože $C,X$ jsou symetrické, tak sčítance mimo diagonálu ($i\neq j$) $C_{i,j}X_{i,j}$ a $C_{j,i}X_{j,i}$ jsou identické. Důsledkem je, že tuto sumu dokážeme napsat jako sumu $k=n+\frac{n^2-n}{2}$ prvků následovně:
+\[
+Tr(CX)=\sum_{i=1}^n(C_{i,i}X_{i,i})+2\sum_{i=1}^{n} \sum_{\substack{j=1}}^{i-1} C_{i,j}X_{i,j}
+\]
+Hledáme tedy matici $C \in S^n$. Porovnáme sčítance v sumách $f(X)=\sum_{i=1}^k a_ib_i$ a $Tr(CX)$ (mají obě $k$ sčítanců). Uvažujme například první sčítanec $C_{1,1}X_{1,1}$ a hledáme jeho odpovídající sčítanec $a_ib_i$. Jak bylo řečeno výše, tak víme, že $\exists i: a_i = X_{1,1}$ (jde jen o to jak si $a_i$ zaindexujeme). Musí platit $a_ib_i = X_{1,1}C_{1,1} \implies b_i = C_{1,1}$. Obdobně pro všechny diagonální prvky. Stručně řečeno, na diagonále $C$ jsou obrazy bázových prvků, které jsou diagonální matice. Pro zbylé prvky mimo diagonálu na indexech $i\neq j$ musí platit $\exists k: a_kb_k = 2C_{i,j}X_{i,j}$, kde $a_k = X_{i,j}=X_{j,i}$. Z toho plyne, že $C_{i,j}=C_{j,i}=\frac{1}{2}b_i$.\\
+Výsledkem je, že na diagonále $C$ jsou obrazy bázových prvků, které jsou diagonální matice, a pro zbylé prvky je to polovina obrazu příslušného bázového prvku, který není diagonální.
+\[
+C = \begin{pmatrix}
+f(B_{i_1}) & \frac{1}{2}f(B_{i_2}) & \dots \\
+\frac{1}{2}f(B_{i_2}) & f(B_{i_3}) & \dots \\
+\vdots & \ddots & \ddots \\
+\end{pmatrix} \text{ pro příslušné $i_1,i_2,\dots$ (záleží na indexování bázových prvků)}
+\]
+\section{}
+\section{}
+Označíme si daných 14 předmětů čísly od 1 do 14 (1. je mapa a 14. je motorová pila). Proměnná $u_i$ bude značit \uv{efektivitu} i. předmětu v dz, $w_i$ jeho váhu v kg a $b_i \in [0,1]$ bude značit kolik daného přemětu si vybereme (1 odpovídá celému předmětu). Chceme maximalizovat $\sum$
+\end{document}
