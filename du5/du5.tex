@@ -47,6 +47,51 @@ f(B_{i_1}) & \frac{1}{2}f(B_{i_2}) & \dots \\
 \end{pmatrix} \text{ pro příslušné $i_1,i_2,\dots$ (záleží na indexování bázových prvků)}
 \]
 \section{}
+Definujme kužel $K \coloneqq \{(x_1,x_2,x_3,x_4,x_5,x_6)^T \in \mathbb{R}^6: \|(x_1,x_2)^T\| \leq x_3, \|(x_4,x_5\| \leq x_6\}$. Matice $F$ a vektory $g, c$ budou vypadat:
+\[
+F = -\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{pmatrix},
+g = -\begin{pmatrix}
+0 \\
+2 \\
+0 \\
+1 \\
+0 \\
+1
+\end{pmatrix},
+c = \begin{pmatrix}
+0\\
+0\\
+1
+\end{pmatrix}
+\]
+Stačí nyní jen nahlédnout, že to odpovídá danému problému. Uvažujme vektor proměnných $y = (y_1, y_2, y_3)$. Podmínka $Fy+g \preceq_K 0$ odpovídá z definice tomu, že vektor
+\[
+v = \begin{pmatrix}
+y_1 \\
+2y_2 + 2\\
+y_3\\
+1\\
+y_2\\
+y_1+1
+\end{pmatrix}
+\]
+je prvkem $K$. Což nastane právě tehdy, když $\|(y_1,2y_2+2)^T\|\leq y_3 \land \|(1,y_2)^T\| \leq y_1+1$. Což kopíruje podmínky zadání ($y_1 = x_1, y_2 = x_2, y_3 = t$). Minimalizujeme poslední složku vektoru $y$, tedy $y_3$ neboli $t$.
 \section{}
-Označíme si daných 14 předmětů čísly od 1 do 14 (1. je mapa a 14. je motorová pila). Proměnná $u_i$ bude značit \uv{efektivitu} i. předmětu v dz, $w_i$ jeho váhu v kg a $b_i \in [0,1]$ bude značit kolik daného přemětu si vybereme (1 odpovídá celému předmětu). Chceme maximalizovat $\sum$
+Označíme si daných 14 předmětů čísly od 1 do 14 (1. je mapa a 14. je motorová pila). Proměnná $u_i$ bude značit \uv{efektivitu} i. předmětu v dz, $w_i$ jeho váhu v kg a $b_i \in [0,1]$ bude značit kolik daného přemětu si vybereme (1 odpovídá celému předmětu). Chceme maximalizovat $\sum_{i=1}^{14} b_i u_i = b^T u$ (celkovou efektivitu vybraných předmětů). Pokud problém vyjádříme jako LP problém tak to bude vypadat takto:
+\begin{gather*}
+\text{minimize } -b^T u\\
+\text{s. t. } b \preceq 1\\
+-b \preceq 0\\
+b^T w \leq 10
+\end{gather*}
+První 2 podmínky zaručují, aby hodnoty $b_i$ byly v intervalu $[0,1]$. Poslední podmínka zaručuje, aby součet vah vybraných předmětů nepřekročil 10 kg.
+
+Optimální řešení nám dává efektivitu $\approx$ 25.88. Ručně jsem nalezl řešení (spočítáním poměru \uv{váha výkon} u každého předmětu a vybíráním od nejlepšího) 1x mapa, 1x baterie, 1x kytara, 1x katana a 1x Jarník. Toto řešení má efektivutu 23. Samozřejmě optimální řešení nerelaxed problému by vyžadovalo vyzkoušení všech kombinací.
 \end{document}
