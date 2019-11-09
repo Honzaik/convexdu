@@ -1,8 +1,6 @@
 import cvxpy as cp
 import numpy as np
 
-#verze b)
-
 b = cp.Variable(14)
 #předměty seřazené jako v zadání 
 w = [0.2,0.6,1.2,2.55,2.65,3.15,3.2,3.35,3.55,3.95,4.1,4.3,4.55,9]

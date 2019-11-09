@@ -46,6 +46,7 @@ f(B_{i_1}) & \frac{1}{2}f(B_{i_2}) & \dots \\
 \vdots & \ddots & \ddots \\
 \end{pmatrix} \text{ pro příslušné $i_1,i_2,\dots$ (záleží na indexování bázových prvků)}
 \]
+
 \section{}
 Definujme kužel $K \coloneqq \{(x_1,x_2,x_3,x_4,x_5,x_6)^T \in \mathbb{R}^6: \|(x_1,x_2)^T\| \leq x_3, \|(x_4,x_5\| \leq x_6\}$. Matice $F$ a vektory $g, c$ budou vypadat:
 \[
@@ -83,6 +84,7 @@ y_1+1
 \end{pmatrix}
 \]
 je prvkem $K$. Což nastane právě tehdy, když $\|(y_1,2y_2+2)^T\|\leq y_3 \land \|(1,y_2)^T\| \leq y_1+1$. Což kopíruje podmínky zadání ($y_1 = x_1, y_2 = x_2, y_3 = t$). Minimalizujeme poslední složku vektoru $y$, tedy $y_3$ neboli $t$.
+
 \section{}
 Označíme si daných 14 předmětů čísly od 1 do 14 (1. je mapa a 14. je motorová pila). Proměnná $u_i$ bude značit \uv{efektivitu} i. předmětu v dz, $w_i$ jeho váhu v kg a $b_i \in [0,1]$ bude značit kolik daného přemětu si vybereme (1 odpovídá celému předmětu). Chceme maximalizovat $\sum_{i=1}^{14} b_i u_i = b^T u$ (celkovou efektivitu vybraných předmětů). Pokud problém vyjádříme jako LP problém tak to bude vypadat takto:
 \begin{gather*}
@@ -94,4 +96,35 @@ b^T w \leq 10
 První 2 podmínky zaručují, aby hodnoty $b_i$ byly v intervalu $[0,1]$. Poslední podmínka zaručuje, aby součet vah vybraných předmětů nepřekročil 10 kg.
 
 Optimální řešení nám dává efektivitu $\approx$ 25.88. Ručně jsem nalezl řešení (spočítáním poměru \uv{váha výkon} u každého předmětu a vybíráním od nejlepšího) 1x mapa, 1x baterie, 1x kytara, 1x katana a 1x Jarník. Toto řešení má efektivutu 23. Samozřejmě optimální řešení nerelaxed problému by vyžadovalo vyzkoušení všech kombinací.
+
+\section{}
+\begin{enumerate}[label=\alph*)]
+\item Uvažujme 2 matice $A,B \in \mathbb{R}^{5 \times 5}$. Vektor $Ax$ bude reprezentovat vyprodukované suroviny v roce 2019 aktivitami, vektor $Bx^{+}$ bude reprezentovat spotřebované suroviny v roce 2020. Matice $A$ a $B$ budou vypadat následovně:
+\[
+A = \begin{pmatrix}
+-1 & 0 & -3 & 0 & 5\\
+-1 & 0 & 0 & -1 & 2\\
+0 & 0 & 10 & 0 & -2\\
+3 & -1 & 0 & 1 & 0\\
+-1 & 1 & -3 & 1 & -3
+\end{pmatrix},
+B = \begin{pmatrix}
+1 & 0 & 3 & 0 & 0\\
+1 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 2\\
+0 & 1 & 0 & 0 & 0\\
+1 & 0 & 3 & 0 & 3 
+\end{pmatrix}
+\]
+Sloupce v matici $A$ reprezentují aktivity a řádky reprezentují suroviny. Například první sloupec odpovídá první aktivitě: spotřebujeme 1 kancelářské potřeby, 1 kafe a 1 štěstí a vyprodukujeme 3 slávy. Matice $B$ je tvořena obdobně, akorát reprezentuje pouze počet spotřebovaných surovin, takže hodnoty co byly v matici $A$ záporné (reprezentující spotřebování suroviny), tak jsou v $B$ kladné a původní kladné hodnoty z $A$ jsou v $B$ nulové, jelikož to, co se vyprodukuje v roce 2020 nás nezajímá. Zadefinujeme si funkci $f_0(x,x^{+}) = \text{max}_{i=1}^5 -\frac{x_i^{+}}{x_i}$. Nyní můžeme zformulovat GLFP:
+\begin{gather*}
+\text{minimize } f_0(x,x^{+})\\
+\text{s. t. } Ax \preceq Bx^{+}\\
+-x^{+} \preceq 0\\
+-x \preceq 1 
+\end{gather*}
+Zřejmě platí $\text{max min} f = \text{min max} -f$. Proto jsme použili místo $g$ (ze zadání) funkci $f_0$. První nerovnost zaručí to, že spotřebované suroviny v 2020 nepřesáhnou vyprodukované v 2019. Podmínka na nezápornost $x^+$ je zřejmá (nemůžeme konat zápornou aktivitu) a poslední podmínka nám zaručí dobrou definovanost funkce $f_0$ ($x_i > 0$) a zároveň je jedno, jestli tam je $1$ nebo jiná kladná konstanta, jelikož nám záleží jen na poměrech mezi $x_i$.
+
+\item b
+\end{enumerate}
 \end{document}
