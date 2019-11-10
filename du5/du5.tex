@@ -136,7 +136,7 @@ Zřejmě platí $\text{max min} f = \text{min max} -f$. Proto jsme použili mís
 Můžeme nyní zformulovat lineární program Q (podobný GLFP), který bude mít optimální hodnotu 0, pokud existují dané vektory $x,x^+$ splňující $g(x,x^+)\geq \alpha$, a nebude mít žádné feasible solution pokud neexistují daná $x,x^+$.
 \begin{gather*}
 \text{minimize } 0\\
-\text{s. t. } Ax \preceq Bx^{+}\\
+\text{s. t. }  Bx^{+} \preceq Ax\\
 -x^{+} \preceq 0\\
 -x \preceq 1 \\
 \alpha x \preceq x^+
