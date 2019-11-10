@@ -32,12 +32,18 @@ Z lineární algebry víme, že lineární zobrazení je jednoznačně určeno o
 1 & 0
 \end{pmatrix}
 \]
-Položme $k \coloneqq \frac{n(n+1)}{2}$. Pro $i=1,\dots,k: B_i$ budou prvky báze popsané výše. Pro libovolné $X \in S^n$ tedy existují $i=1,\dots,k: a_i \in \mathbb{R}: X = \sum_{i=1}^k a_iB_i$. $f$ je lineární, takže $f(X)=f(\sum_{i=1}^k a_iB_i)=\sum_{i=1}^k a_if(B_i)$. Označme $i=1,\dots,k: b_i = f(B_i) \in \mathbb{R}$. Z toho, jak je zvolena báze, je zřejmé, že každý prvek $a_i$ je roven nějakému prvku $X_{i,j}=X_{j,i}$.\\
+Položme $k \coloneqq \frac{n(n+1)}{2}$. Pro $i=1,\dots,k: B_i$ budou prvky báze popsané výše. Pro libovolné $X \in S^n$ tedy existují $i=1,\dots,k: a_i \in \mathbb{R}: X = \sum_{i=1}^k a_iB_i$. $f$ je lineární, takže $f(X)=f(\sum_{i=1}^k a_iB_i)=\sum_{i=1}^k a_if(B_i)$. Označme $i=1,\dots,k: b_i = f(B_i) \in \mathbb{R}$. Z toho, jak je zvolena báze, je zřejmé, že každý prvek $a_i$ je roven nějakému prvku $X_{i,j}=X_{j,i}$.
+
+
 Víme, že platí $\forall C,X \in S^n: Tr(CX)= \sum_{i=1}^{n} \sum_{j=1}^{n} C_{i,j}X_{i,j}$. Protože $C,X$ jsou symetrické, tak sčítance mimo diagonálu ($i\neq j$) $C_{i,j}X_{i,j}$ a $C_{j,i}X_{j,i}$ jsou identické. Důsledkem je, že tuto sumu dokážeme napsat jako sumu $k=n+\frac{n^2-n}{2}$ prvků následovně:
 \[
 Tr(CX)=\sum_{i=1}^n(C_{i,i}X_{i,i})+2\sum_{i=1}^{n} \sum_{\substack{j=1}}^{i-1} C_{i,j}X_{i,j}
 \]
-Hledáme tedy matici $C \in S^n$. Porovnáme sčítance v sumách $f(X)=\sum_{i=1}^k a_ib_i$ a $Tr(CX)$ (mají obě $k$ sčítanců). Uvažujme například první sčítanec $C_{1,1}X_{1,1}$ a hledáme jeho odpovídající sčítanec $a_ib_i$. Jak bylo řečeno výše, tak víme, že $\exists i: a_i = X_{1,1}$ (jde jen o to jak si $a_i$ zaindexujeme). Musí platit $a_ib_i = X_{1,1}C_{1,1} \implies b_i = C_{1,1}$. Obdobně pro všechny diagonální prvky. Stručně řečeno, na diagonále $C$ jsou obrazy bázových prvků, které jsou diagonální matice. Pro zbylé prvky mimo diagonálu na indexech $i\neq j$ musí platit $\exists k: a_kb_k = 2C_{i,j}X_{i,j}$, kde $a_k = X_{i,j}=X_{j,i}$. Z toho plyne, že $C_{i,j}=C_{j,i}=\frac{1}{2}b_i$.\\
+Hledáme tedy matici $C \in S^n$. Porovnáme sčítance v sumách $f(X)=\sum_{i=1}^k a_ib_i$ a $Tr(CX)$ (mají obě $k$ sčítanců). Uvažujme například první sčítanec $C_{1,1}X_{1,1}$ a hledáme jeho odpovídající sčítanec $a_ib_i$. Jak bylo řečeno výše, tak víme, že $\exists i: a_i = X_{1,1}$ (jde jen o to jak si $a_i$ zaindexujeme). Musí platit $a_ib_i = X_{1,1}C_{1,1} \implies b_i = C_{1,1}$. Obdobně pro všechny diagonální prvky. 
+
+Stručně řečeno, na diagonále $C$ jsou obrazy bázových prvků, které jsou diagonální matice. Pro zbylé prvky mimo diagonálu na indexech $i\neq j$ musí platit $\exists k: a_kb_k = 2C_{i,j}X_{i,j}$, kde $a_k = X_{i,j}=X_{j,i}$. Z toho plyne, že $C_{i,j}=C_{j,i}=\frac{1}{2}b_i$.
+
+
 Výsledkem je, že na diagonále $C$ jsou obrazy bázových prvků, které jsou diagonální matice, a pro zbylé prvky je to polovina obrazu příslušného bázového prvku, který není diagonální.
 \[
 C = \begin{pmatrix}
@@ -125,6 +131,17 @@ Sloupce v matici $A$ reprezentují aktivity a řádky reprezentují suroviny. Na
 \end{gather*}
 Zřejmě platí $\text{max min} f = \text{min max} -f$. Proto jsme použili místo $g$ (ze zadání) funkci $f_0$. První nerovnost zaručí to, že spotřebované suroviny v 2020 nepřesáhnou vyprodukované v 2019. Podmínka na nezápornost $x^+$ je zřejmá (nemůžeme konat zápornou aktivitu) a poslední podmínka nám zaručí dobrou definovanost funkce $f_0$ ($x_i > 0$) a zároveň je jedno, jestli tam je $1$ nebo jiná kladná konstanta, jelikož nám záleží jen na poměrech mezi $x_i$.
 
-\item b
+\item Máme tedy $\alpha$ pevně dané. Chceme zjistit, jestli pro všechna $i=1,\dots,5$ platí $\frac{x_i^+}{x_i} \geq \alpha$. Jestli ano, tak zřejmě $g(x,x^+)\geq \alpha$ z definice. Podmínku se zlomkem můžeme ale ekvivalentně napsat jako $i=1,\dots,5: x_i^+ \geq \alpha x_i$. To dle našeho značení jde napsat vektorově jako $\alpha x \preceq x^+$. 
+
+Můžeme nyní zformulovat lineární program Q (podobný GLFP), který bude mít optimální hodnotu 0, pokud existují dané vektory $x,x^+$ splňující $g(x,x^+)\geq \alpha$, a nebude mít žádné feasible solution pokud neexistují daná $x,x^+$.
+\begin{gather*}
+\text{minimize } 0\\
+\text{s. t. } Ax \preceq Bx^{+}\\
+-x^{+} \preceq 0\\
+-x \preceq 1 \\
+\alpha x \preceq x^+
+\end{gather*}
+
+\item email
 \end{enumerate}
 \end{document}
