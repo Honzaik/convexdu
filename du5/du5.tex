@@ -106,6 +106,7 @@ Optimální řešení nám dává efektivitu $\approx$ 25.88. Ručně jsem nalez
 \section{}
 \begin{enumerate}[label=\alph*)]
 \item Uvažujme 2 matice $A,B \in \mathbb{R}^{5 \times 5}$. Vektor $Ax$ bude reprezentovat vyprodukované suroviny v roce 2019 aktivitami, vektor $Bx^{+}$ bude reprezentovat spotřebované suroviny v roce 2020. Matice $A$ a $B$ budou vypadat následovně:
+\iffalse
 \[
 A = \begin{pmatrix}
 -1 & 0 & -3 & 0 & 5\\
@@ -122,10 +123,27 @@ B = \begin{pmatrix}
 1 & 0 & 3 & 0 & 3 
 \end{pmatrix}
 \]
-Sloupce v matici $A$ reprezentují aktivity a řádky reprezentují suroviny. Například první sloupec odpovídá první aktivitě: spotřebujeme 1 kancelářské potřeby, 1 kafe a 1 štěstí a vyprodukujeme 3 slávy. Matice $B$ je tvořena obdobně, akorát reprezentuje pouze počet spotřebovaných surovin, takže hodnoty co byly v matici $A$ záporné (reprezentující spotřebování suroviny), tak jsou v $B$ kladné a původní kladné hodnoty z $A$ jsou v $B$ nulové, jelikož to, co se vyprodukuje v roce 2020 nás nezajímá. Zadefinujeme si funkci $f_0(x,x^{+}) = \text{max}_{i=1}^5 -\frac{x_i^{+}}{x_i}$. Nyní můžeme zformulovat GLFP:
+\fi 
+\[
+A = \begin{pmatrix}
+0 & 0 & 0 & 0 & 5\\
+0 & 0 & 0 & 0 & 2\\
+0 & 0 & 10 & 0 & 0\\
+3 & 0 & 0 & 1 & 0\\
+0 & 1 & 0 & 1 & 0
+\end{pmatrix},
+B = \begin{pmatrix}
+1 & 0 & 3 & 0 & 0\\
+1 & 0 & 0 & 1 & 0\\
+0 & 0 & 0 & 0 & 2\\
+0 & 1 & 0 & 0 & 0\\
+1 & 0 & 3 & 0 & 3 
+\end{pmatrix}
+\]
+Sloupce v matici $A$ reprezentují aktivity a řádky reprezentují suroviny. Například první sloupec odpovídá první aktivitě: vyprodukujeme 3 slávy. Matice $B$ je tvořena obdobně, akorát reprezentuje pouze počet spotřebovaných surovin. Zadefinujeme si funkci $f_0(x,x^{+}) = \text{max}_{i=1}^5 -\frac{x_i^{+}}{x_i}$. Nyní můžeme zformulovat GLFP:
 \begin{gather*}
 \text{minimize } f_0(x,x^{+})\\
-\text{s. t. } Ax \preceq Bx^{+}\\
+\text{s. t. } Bx^{+} \preceq Ax\\
 -x^{+} \preceq 0\\
 -x \preceq 1 
 \end{gather*}

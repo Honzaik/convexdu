@@ -4,43 +4,44 @@ import numpy as np
 
 
 def existsAtLeast(alpha):
-    A = np.matrix('-1.0 0.0 -3.0 0.0 5.0; -1.0 0.0 0.0 -1.0 2.0; 0.0, 0.0, 10.0, 0.0, -2.0; 3.0, -1.0, 0.0, 1.0, 0.0; -1.0, 1.0, -3.0, 1.0, -3.0')
-    B = np.matrix('1.0 0.0 3.0 0.0 0.0; 1.0 0.0 0.0 1.0 0.0; 0.0, 0.0, 0.0, 0.0, 2.0; 0.0, 1.0, 0.0, 0.0, 0.0; 1.0, 0.0, 3.0, 0.0, 3.0')
-    x1 = cp.Variable(5) #x+
-    x2 = cp.Variable(5) #x
+    A = np.matrix('-1.0, 0.0, -3.0, 0.0, 5.0; -1.0, 0.0, 0.0, -1.0, 2.0; 0.0, 0.0, 10.0, 0.0, -2.0; 3.0, -1.0, 0.0, 1.0, 0.0; -1.0, 1.0, -3.0, 1.0, -3.0')
+    A = np.matrix('0, 0, 0, 0.0, 5.0; 0.0, 0.0, 0.0, 0.0, 2.0; 0.0, 0.0, 10.0, 0.0, 0.0; 3.0, 0.0, 0.0, 1.0, 0.0; 0.0, 1.0, 0.0, 1.0, 0.0')
+    B = np.matrix('1.0, 0.0, 3.0, 0.0, 0.0; 1.0, 0.0, 0.0, 1.0, 0.0; 0.0, 0.0, 0.0, 0.0, 2.0; 0.0, 1.0, 0.0, 0.0, 0.0; 1.0, 0.0, 3.0, 0.0, 3.0')
+    xplus = cp.Variable(5) #x+
+    x = cp.Variable(5) #x
     t = cp.Variable(1)
     obj = cp.Minimize(0)
-    constraints = [x1>=0, x2>=0, A*x2 <= B*x1, x1-x2*alpha >= 0, sum(x2) == 1]
+    constraints = [x>=0, xplus>=0, B*xplus <= A*x, xplus-x*alpha >= 0, cp.sum(x) == 1]
     prob = cp.Problem(obj, constraints)
     prob.solve()
-    print(x1.value)
-    print(x2.value)
+    print(xplus.value)
+    print(x.value)
     print(prob.value)
     if prob.value == np.inf:
         return False
     else:
-        print(min(x1.value/x2.value))
+        print(min(xplus.value/x.value))
         return True
 
 def existsLessThan(alpha):
     A = np.matrix('-1.0 0.0 -3.0 0.0 5.0; -1.0 0.0 0.0 -1.0 2.0; 0.0, 0.0, 10.0, 0.0, -2.0; 3.0, -1.0, 0.0, 1.0, 0.0; -1.0, 1.0, -3.0, 1.0, -3.0')
     B = np.matrix('1.0 0.0 3.0 0.0 0.0; 1.0 0.0 0.0 1.0 0.0; 0.0, 0.0, 0.0, 0.0, 2.0; 0.0, 1.0, 0.0, 0.0, 0.0; 1.0, 0.0, 3.0, 0.0, 3.0')
-    x1 = cp.Variable(5) #x+
-    x2 = cp.Variable(5) #x
+    xplus = cp.Variable(5) #x+
+    x = cp.Variable(5) #x
     t = cp.Variable(1)
     obj = cp.Minimize(0)
-    constraints = [x1>=0, x2>=0, A*x2 <= B*x1, x1-x2*alpha <= 0, sum(x2) == 1]
+    constraints = [x>=0, xplus>=0, B*xplus <= A*x, xplus-x*alpha <= 0]
     prob = cp.Problem(obj, constraints)
     prob.solve()
-    print(x1.value)
-    print(x2.value)
+    print(xplus.value)
+    print(x.value)
     print(prob.value)
     if prob.value == np.inf:
         return False
     else:
-        print(min(x1.value/x2.value))
+        print(min(xplus.value/x.value))
         return True
 
 
-print(existsAtLeast(90))
-print(existsLessThan(30))
+print(existsAtLeast(1.05))
+#print(existsLessThan(30))
