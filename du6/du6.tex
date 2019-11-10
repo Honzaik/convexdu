@@ -1,0 +1,27 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{indentfirst} %indentace prvního odstavce
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[czech]{babel}
+\usepackage{mathdots}
+\usepackage{slashbox}
+
+\begin{document}
+
+\section{}
+Z definice \uv{feasible solution} víme, že pro každé $x,y \in X$ platí $\forall i: f_i(x) \leq 0$, kde $f_i$ jsou konvexní funkce z definice (P). Dále také platí $Ax=Ay=b$, kde $A,b$ je matice a vektor z definice (P). Zvolme $\theta \in [0,1]$ a dokážeme, že $\theta x + (1-\theta)y$ splňuje tyto rovnosti a nerovnosti, takže je také součástí $X$, takže $X$ je konvexní.
+\begin{gather*}
+\forall i: f_i(\theta x + (1-\theta)y) \stackrel{f_i \text{ konvex.}}{\leq} \theta f_i(x) + (1-\theta)f_i(y) \stackrel{f_i(x),f_i(y)\leq 0}{\leq} \theta 0 + (1-\theta)0 = 0\\
+A(\theta x + (1-\theta)y)  \stackrel{\text{distrub. nasobeni matic}}{=} \theta Ax + (1-\theta) Ay \stackrel{Ax=Ay=b}{=} \theta b + (1-\theta)b = b
+\end{gather*}
+Z toho plyne $\theta x + (1-\theta)y \in X$. $X$ je tedy konvexní množina.
+
+\end{document}
