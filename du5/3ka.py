@@ -26,6 +26,3 @@ print(np.round(b.value,2))
 # 1x bowlingová koule
 # 0.5x jarník
 # celkem 25.88 dz
-
-for i in range(14):
-    print(str(i+1) + ': ' + str(u[i]/w[i]))
