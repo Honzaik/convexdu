@@ -81,5 +81,17 @@ Díky tomu, že matice jsou diagonální je zřejmé, že podmínky jsou ekvival
 \item P-F nám říká, že největší kladné vlastní číslo je infimum dané množiny "lambd". Minimalizací najdeme tedy hledané infimum. Pokud ale použijeme naivní techniku, tak budeme hledat supremum dané množiny. Nikde ale nemáme napsáno, že supremum nějak zdola omezuje největší kladné vlastní číslo. Proto daná metoda nebude fungovat.
 \end{enumerate}
 
+\section{}
+Problém je poměrně přimočarý:
+\begin{gather*}
+\text{maximize: } p^Tx - \gamma x^T \Sigma x\\
+\text{s. t. } x_1+x_2+x_3+x_4 = 1\\
+-x \preceq 0\\
+\text{kde}\\
+p^T = \begin{pmatrix}
+0.07 & 0.08 & 0.09 & 0.1
+\end{pmatrix}
+\end{gather*}
+Čím větší parametr $\gamma$ tím větší důraz na minimalitu variance profitu. Tím pádem, pokud nás nezajímá risk ($\gamma = 0$), tak doporučuji investovat vše do akcie 4. Pokud nechceme úplně ignorovat risk, ale chceme mít skoro maximální profit ($\gamma = 0.1$), tak doporučuji $x  \approx (0.684, 0.240, 0, 0.092)$. Pro minimální risk doporučuji $x \approx (0.695,0.22, 0, 0.085)$.
 
 \end{document}
