@@ -24,4 +24,55 @@ A(\theta x + (1-\theta)y)  \stackrel{\text{distrub. nasobeni matic}}{=} \theta A
 \end{gather*}
 Z toho plyne $\theta x + (1-\theta)y \in X$. $X$ je tedy konvexní množina.
 
+\section{}
+Podmínku o semidefinitnosti matic můžeme zjednodušit (dosazením a sečteným) na to, že matice $H$ musí být negativně semidefinitní neboli $-H$ pozitivně semidefinitní:\\
+\begin{minipage}{.5\linewidth}
+\begin{gather*}
+H = \begin{pmatrix}
+-x_1+2x_2+100 & 2x_1+56\\
+2x_1+56 & x_1 + x_2 + 100
+\end{pmatrix}, H \preceq 0 \iff
+\end{gather*}
+\end{minipage}
+\begin{minipage}{.5\linewidth}
+\begin{equation}
+x_1-2x_2-100 \geq 0
+\end{equation}
+\begin{equation}
+-x_1-x_2-100 \geq 0
+\end{equation}
+\begin{equation}
+det(-H) \geq 0
+\end{equation}
+\end{minipage}
+
+Víme, že matice $2 \times 2$ je pozitivně semidefinitní právě tehdy, když prvky na diagonále jsou nezáporné a determinant je nezáporný, což přesně vyjadřují nerovnice výše.
+\[
+det(-H) = 2 x_2^2 + x_1x_2 +300x_2 -5x_1^2 -224x_1 +6864
+\]
+
+V programu $Q$ budeme mít celkem 6 proměnných $y_1, \dots, y_6$. Proměnné budou mít tento význam: $x_1 = x_1^+ - x_1^- = y_1 - y_2$, analogicky $x_2 = y_3 - y_4, x_3 = y_5 - y_6$, kde $y_i \geq 0$. Matice $Y$ bude typu $9 \times 9$, kde na diagonále budou proměnné $y_1,\dots, y_6$ a zbylá 3 místa na diagonále budou odpovídat rovnicím $(1),(2),(3)$.
+\begin{gather*}
+x_1-2x_2-100 \geq 0 \iff (y_1-y_2) - 2(y_3-y_4)-100 \geq 0\\
+-x_1-x_2-100 \geq 0 \iff -(y_1-y_2) -(y_3-y_4)-100 \geq 0\\
+det(-H) \geq 0\\
+\iff \\
+2(y_3-y_4)^2 + (y_1-y_2)(y_3-y_4) + 300(y_3-y_4) -5(y_1-y_2)^2 - 224(y_1-y_2)+6864 \geq 0\\
+\implies \\
+Y = diag(y_1, y_2, y_3, y_4, y_5, y_6, (y_1-y_2) - 2(y_3-y_4)-100,  -(y_1-y_2) -(y_3-y_4)-100, \\
+2(y_3-y_4)^2 + (y_1-y_2)(y_3-y_4) + 300(y_3-y_4) -5(y_1-y_2)^2 - 224(y_1-y_2)+6864)
+\end{gather*}
+Matice $Y$ je diagonální, takže bude pozitivně semidefinitní právě tehdy, když všechny prvky na diagonále budou nezáporné, což nastane právě tehdy, když budou splněny dané nerovnice.
+Maticí $A$ potřebujeme vyjádřit jedinou rovnost v $P$, toho docílíme, pokud
+\begin{gather*}
+A = diag(1,-1,1,-1,1,-1,0,0,0), b=1\\
+\iff\\
+(y_1-y_2)+(y_3-y_4)+(y_5-y_6) = 1
+\end{gather*}
+Matici $C$ definujeme také jako diagonální, aby platila ekvivalentní min. podmínka, takže
+\[
+C = diag(5,-5,-1,1,0,0,0,0,0)
+\]
+Díky tomu, že matice jsou diagonální je zřejmé, že podmínky jsou ekvivalentní.
+
 \end{document}
