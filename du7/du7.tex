@@ -17,7 +17,31 @@
 \begin{document}
 
 \section{}
-s
+Dokážeme nejdříve implikaci "$K$ obsahuje přímku $\implies$ $K^*$ neobsahuje $n$-tici LN vektorů":
+
+$K$ obsahuje přímku neboli existuje nenulový vektor $v \in K$ tž. $\forall \lambda \in \mathbb{R}: \lambda v \in K$, speciálně $-v,v \in K$. Mějme libovolnou $n$-tici vektorů $y_1,\dots,y_n \in K^*$. Z definice $K^*$ platí, že $\forall i: v^T y_i \geq 0 \land -(v^Ty_i) \geq 0 \implies v^Ty_i = 0$. Uvažujme matici
+\[
+A = \begin{pmatrix}
+y_1^T\\
+y_2^T\\
+\vdots\\
+y_n^T
+\end{pmatrix} \implies Av = \begin{pmatrix}
+v^Ty_1\\
+v^Ty_2\\
+\vdots\\
+v^Ty_n
+\end{pmatrix}
+\]
+Z lineární algebry víme, že matice $A$ je singulární $\iff$ existuje nenulový vektor $x$ tž. $Ax=0$. Tento vektor existuje a je to právě $v$. Dále víme, že $A$ je singulární $\iff$ řádky $A$ jsou lineárně závislé. Takže $y_1,\dots,y_n$ je lineárně závislá posloupnost.
+
+Nyní dokážeme implikaci "$K$ neobsahuje $n$-tici LN vektorů $\implies K^*$ obsahuje přímku":
+
+Pokud $K$ neobsahuje $n$-tici LN vektorů, tak $K$ je obsažen v podprostoru $R^n$ menší dimenze než $n$ (lineární obal $K$). Z toho plyne, že existuje vektor $v \in \mathbb{R}^n$ tž. je kolmý na daný podprostor (Gram-Schmidt), speciálně $\forall y \in K: v^T y = 0$. Z definice plyne $v \in K^*$ a také jeho libovolný násobek $cv$, kde $c \in R$, protože $\forall y \in K: (cv)^Ty = c(v^Ty) = c(0) = 0$.
+
+Druhá implikace ze zadání ($K^*$ neobsahuje $n$-tici LN vektorů $\implies K$ obsahuje přímku") plyne z přechozích dvou:
+
+Předpokládáme, že $K$ je uzavřená množina neboli $\overline{K} = K$ a díky faktu ze zadání tedy platí $(K^*)^* = K$. V předchozí implikaci tedy dosadíme místo $K$ $K^*$ a máme dokázanou zbývající implikaci.
 
 \section{}
 m
@@ -68,6 +92,17 @@ $y^T = (-1, 0, 2)$:
 \end{gather*}
 
 \section{}
-dd
+Dokážeme 2 inkluze: $int(S^n_+) \subseteq S^n_{++}$ a $S^n_{++} \subseteq int(S^n_+)$. Budeme uvažovat spektrální normu. První inkluze:
 
+Zvolme $A \in int(S^n_+)$. Z definice tedy  $\exists \epsilon > 0, \forall X \in S^n, \Vert A-X \Vert < \epsilon \implies X \in S^n_+$. Zvolme $0 < \delta < \epsilon$, položme $X \coloneqq  A - \delta I_n$. Poté zřejmě $\Vert A - X \Vert = \Vert \delta I_n \Vert = \delta < \epsilon$. Takže $A-\delta I_n \in S^n_+$. Vlastní čísla matice $A-\delta I_n$ jsou právě $\lambda_i - \delta$, kde $\lambda_i$ je vlastní číslo $A$. To platí z definice: nechť $x$ vlastní vektor $A$ příslušný vlastnímu číslu $\lambda_i$ $\iff x$ je vlastní vektor $A-\delta I_n$ příslušný $\lambda_i - \delta$, protože:
+\begin{gather*}
+\implies: (A-\delta I_n)x = Ax - \delta I_n x = \lambda_i x - \delta x = (\lambda_i -\delta) x\\
+\impliedby: Ax - \delta x = (A-\delta I_n)x = (\lambda_i - \delta)x = \lambda_i x - \delta x \implies Ax = \lambda_i x
+\end{gather*}
+
+$A-\delta I_n \in S^n_+ \implies \lambda_i-\delta \geq 0$, takže pro vlastní čísla $A$ platí $\lambda_i \geq \delta > 0$. Takže $A \in S^n_{++}$.
+
+Nyní druhá inkluze:
+
+Zvolme $A \in S^n_{++}$. Položme $\lambda$ jako nejmenší vlastní číslo $A$. $A$ je pozitivně definitní, takže $\lambda > 0$. Uvažujme kouli $S \coloneqq \{ X \in S^n: \Vert A-X \Vert < \frac{\lambda}{2}\}$. Dokážeme, že $S \subseteq S^n_+$ a tím bude platit druhá inkluze. Zvolme $X \in S$, z definice spektrální normy tedy plyne, že $\forall x \in R^n, \Vert x \Vert = 1: $
 \end{document}
