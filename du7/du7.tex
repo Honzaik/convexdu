@@ -44,8 +44,13 @@ Druhá implikace ze zadání ($K^*$ neobsahuje $n$-tici LN vektorů $\implies K$
 Předpokládáme, že $K$ je uzavřená množina neboli $\overline{K} = K$ a díky faktu ze zadání tedy platí $(K^*)^* = K$. V předchozí implikaci tedy dosadíme místo $K$ $K^*$ a máme dokázanou zbývající implikaci.
 
 \section{}
-m
+Předpokládejme, že platí první implikace co máme dokázat. Jestliže $K$ je \uv{proper cone}, tak neobsahuje přímku a je uzavřený, tudíž z 1) plyne, že $K^*$ obsahuje $n$ lineárně nezávislých vektorů a díky implikaci, co si dokážeme, z toho plyne, že $K*$ má neprázdný vnitřek. (Z přednášky také ale víme, že pokud $K$ proper $\implies$ $K^*$ proper $\implies K^*$ neprázdný vnitřek, takže tohle by nebylo potřeba).
 
+Dokážeme tedy zbývající implikaci:
+
+Předpokládáme tedy, že existuje $n$ lineárně nezávislých vektorů $b_1,\dots,b_n \in K$. Tyto vektory tvoří bázi $B$ prostoru $\mathbb{R}^n$. Položme $p = \sum_{i=1}^n b_i$. Jelikož $K$ je kužel, tak $p \in K$. Budeme uvažovat maximovou normu. Buď $A$ matice přechodu od kanonické báze k bázi $B$. Označme $M \coloneqq sup\{\Vert Ax \Vert: x \in \mathbb{R}^n, \Vert x \Vert = 1\}$. $M$ je tedy největší souřadnice, kterou může jednotkový vektor v bázi $B$ dostat a uvažujeme-li indukovanou normu na maticích tak právě $\Vert A \Vert = M$. Uvažujeme-li vektor $v$ tž. $\Vert v \Vert < \frac{1}{M}$, pak z vlastností normy platí: $\Vert Av \Vert \leq \Vert A \Vert . \Vert v \Vert < M \frac{1}{M} = 1$. Neboli všechny souřadnice ($Av$ je vektor souřadnic) vektoru s normou menší než $\frac{1}{M}$ v bázi $B$ jsou menší než 1.
+
+Uvažujme nyní množinu $C = \{y \in \mathbb{R}^n: \Vert p - y \Vert < \frac{1}{D}\}$. Zvolme $y \in C$. Pokud $y \in K$, tak $K$ má neprázdný vnitřek. Pro vektor $p-y$ z definice platí $\Vert p-y \Vert < \frac{1}{D} \implies \Vert A(p-y) \Vert < 1$. Dozvěděli jsme se, že souřadnice vektoru $p-y$ jsou v absolutní hodnotě menší než $1$. Vyjádříme $p-y$ v bázi $B \implies p-y = \sum_{i=1}^n c_i b_i$, kde $|c_i| < 1$. $p-y$ umíme vyjádřit druhým způsobem: $p-y = \sum_{i=1}^n b_i - \sum_{i=1}^n d_i b_i = \sum_{i=1}^n (1-d_i)b_i \implies 1-d_i = c_i \implies |1-d_i| < 1 \implies d_i > 0$. Takže $y$ je konvexní kombinací $b_1,\dots, b_n$ neboli $y \in K$.
 \section{}
 Z Farskasova lemma plyne, že pokud dokážeme, že existuje $y \in \mathbf{R}^3: A^T y \geq 0 \land b^T y < 0$, kde $b^T = (3, -2, 0)$ a 
 \[
@@ -104,5 +109,21 @@ $A-\delta I_n \in S^n_+ \implies \lambda_i-\delta \geq 0$, takže pro vlastní �
 
 Nyní druhá inkluze:
 
-Zvolme $A \in S^n_{++}$. Položme $\lambda$ jako nejmenší vlastní číslo $A$. $A$ je pozitivně definitní, takže $\lambda > 0$. Uvažujme kouli $S \coloneqq \{ X \in S^n: \Vert A-X \Vert < \frac{\lambda}{2}\}$. Dokážeme, že $S \subseteq S^n_+$ a tím bude platit druhá inkluze. Zvolme $X \in S$, z definice spektrální normy tedy plyne, že $\forall x \in R^n, \Vert x \Vert = 1: $
+Zvolme $A \in S^n_{++}$. Položme $\lambda_{min}$ jako nejmenší vlastní číslo $A$. $A$ je pozitivně definitní, takže $\lambda_{min} > 0$. Uvažujme kouli $S \coloneqq \{ X \in S^n: \Vert A-X \Vert < \lambda\}$. Dokážeme, že $S \subseteq S^n_+$ a tím bude platit druhá inkluze. Zvolme $X \in S$, z definice spektrální normy (pro symetrické matice) tedy plyne, že pro největší vlastní číslo matice $A-X$, které označíme $\delta_{max}$, platí $\delta_{max} < \lambda_{min}$. 
+
+Zvolme libovolný $x \in \mathbb{R}^n, \Vert x \Vert = 1$. Matice $A-X$ je symetrická, tudíž ortogonálně diagonalizovatelná, a proto platí $x^T(A-X)x \leq \delta_{max}$. Protože buď $QDQ^T$ ortogonální rozklad $A-X$:
+\begin{gather*}
+x^T(A-X)x = x^T(QDQ^T)x = (Q^Tx)^TD(Q^Tx) = \sum_{i=1}^n \delta_i (q_i^Tx)^2 \leq  \delta_{max} \sum_{i=1}^n (q_i^Tx)^2 =  \\
+= \delta_{max}\Vert x \Vert^2 = \delta_{max}
+\end{gather*}
+
+Obdobně lze dokázat, že $\forall x \in \mathbb{R}^n, \Vert x \Vert = 1: x^T A x \geq \lambda_{min}$, kde $\lambda_{min}$ je nejmenší vlastní číslo $A$.
+
+Pokud tyto nerovnosti spojíme, tak dostaneme $\forall x \in \mathbb{R}^n: \Vert x \Vert = 1$:
+\begin{gather*}
+\delta_{max} \geq x^T(A-X)x = x^TAx - x^TXx \implies x^TXx \geq x^TAx - \delta_{max}\\
+x^TAx \geq \lambda_{min} \implies x^TXx \geq \lambda_{min} - \delta_{max} > 0
+\end{gather*}
+
+Dokázali jsme tedy, že $X \in S^n_{+}$. Tedy i druhou inkluzi.
 \end{document}
