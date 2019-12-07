@@ -1,0 +1,56 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8x]{inputenc}
+\usepackage{indentfirst} %indentace prvního odstavce
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[czech]{babel}
+\usepackage{mathdots}
+\usepackage{slashbox}
+
+\begin{document}
+
+\section{}
+Ze zadání $p^* = \frac{1}{3}$. LP splňuje Slaterovo kritérium, takže máme \uv{strong duality} $p^*=d^*$. Chceme najít $(\lambda^*,\nu^*)$, tž. jsou to optimální řešení duálu. Definujeme Lagrangian:
+\begin{gather*}
+L(x,\lambda,\nu) = x_1^2+x_2^2+x_3^2-\lambda_1x_1-\lambda_2x_2-\lambda_3x_3+\nu x_1 + \nu x_2 + \nu x_3 - \nu\\
+i = 1,2,3: \frac{\partial L}{\partial x_i} (x,\lambda,\nu)=2x_i-\lambda_i+\nu
+\end{gather*}
+Vidíme, že Lagrangian je konvexní funkce, tudíž jeho globální minumim bude v místě, kde je nulový gradient. Musí platit tedy: 
+\begin{gather*}
+i = 1,2,3: \frac{\partial L}{\partial x_i} = 0 \iff x_i = \frac{\lambda_i - \nu}{2}\\
+\end{gather*}
+Z KKT podmínky dále máme další požadavek na potenciální $\lambda^*$. Tím je complementary slackness, tudíž $i=1,2,3: \lambda_i^* (-x_i^*) = 0$, ale $x_i^* \neq 0 \implies \lambda_i^* = 0$. Výpočet se nyní zjednoduší, víme tedy $\lambda^* = (0,0,0)^T$. Dopočítáme $\nu$. Z rovnic výše a KKT vidíme, že 
+\begin{gather*}
+\nu^* = 0-2x_i^*= -2\frac{1}{3}=-\frac{2}{3}
+\end{gather*}
+Tedy dual opt. solution je $((0,0,0)^T, -\frac{2}{3})$. Po dosazení (pro kontrolu) nám výjde i, že $p^* = d^*$.
+\section{}
+\section{}
+\section{}
+P1 má tedy 8 možností (umístění lodi). Očíslujeme si je od 1 do 8 v pořadí, jak jsou v zadání. P2 má 7 možností, kam střelit. To je právě 7 políček na hrací ploše. Očíslujeme si je od 1 do 7 (zleva doprava, shora dolů). Po tomto očíslování, můžeme definovat payoff matici $A$:
+\begin{gather*}
+A = \begin{pmatrix}
+-1 & 1 & 1 & 1 & -1 & 1 & 1 & 1\\
+1 & -1 & 1 & 1 & -1 & -1 & 1 & 1\\
+1 & 1 & -1 & 1 & 1 & -1 & -1 & 1\\
+1 & 1 & 1 & 1 & 1 & 1 & -1 & 1\\
+-1 & 1 & 1 & -1 & 1 & 1 & 1 & 1\\
+1 & -1 & 1 & -1 & 1 & 1 & 1 & -1\\
+1 & 1 & -1 & 1 & 1 & 1 & 1 & -1
+\end{pmatrix}
+\end{gather*}
+Použijeme obdobný postup pro nalezení worst case opt. řešení pro P1 a P2. LP pro zjištění worst case opt. řešení pro P1 bude vypadat:
+\begin{gather*}
+maximize \ t\\
+s.t. \ p \succeq 0\\
+\sum_{i=1}^8 p_i = 1\\
+i=1,\dots, 7: t \leq \tilde{a}_i^T p \text{, kde }\tilde{a}_i^T \text{ je }i. \text{ řádek matice } A
+\end{gather*}
+\end{document}
