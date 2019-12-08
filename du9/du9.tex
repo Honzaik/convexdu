@@ -1,5 +1,5 @@
-\documentclass[12pt, a4paper]{article}
-\usepackage[margin=1in]{geometry}
+\documentclass[10pt, a4paper]{article}
+\usepackage[margin=0.8in]{geometry}
 \usepackage[utf8x]{inputenc}
 \usepackage{indentfirst} %indentace prvního odstavce
 \usepackage{mathtools}
@@ -49,8 +49,18 @@ A = \begin{pmatrix}
 Použijeme obdobný postup pro nalezení worst case opt. řešení pro P1 a P2. LP pro zjištění worst case opt. řešení pro P1 bude vypadat:
 \begin{gather*}
 maximize \ t\\
-s.t. \ p \succeq 0\\
-\sum_{i=1}^8 p_i = 1\\
+s.t. \ p \succeq 0, \ \sum_{i=1}^8 p_i = 1\\
 i=1,\dots, 7: t \leq \tilde{a}_i^T p \text{, kde }\tilde{a}_i^T \text{ je }i. \text{ řádek matice } A
 \end{gather*}
+Pro worst case opt. pro P2 použijeme hodnoty z dualu nebo vytvoříme obdobný program s transponovanou matici $A$ a vynásobenou -1.
+
+
+Výsledné hodnoty jsou:
+\begin{gather*}
+\text{Value of the game} = 0.3824\\
+p^* = (0.175, 0.028, 0.019, 0.074, 0.159, 0.064, 0.250, 0.231)^T\\
+q^* = (\frac{1}{3}, 0, \frac{1}{3}, 0, 0, \frac{1}{3}, 0)^T\\
+\end{gather*}
+
+\section{}
 \end{document}
