@@ -20,8 +20,8 @@ prob.solve()
 
 # Print result.
 print("Vysledek obj funkce:", prob.value)
-print("P:", p.value)
-print("Q:")
+print("P*:", p.value)
+print("Q*:")
 print("1:", constraints[2].dual_value)
 print("2:", constraints[3].dual_value)
 print("3:", constraints[4].dual_value)
@@ -30,7 +30,7 @@ print("5:", constraints[6].dual_value)
 print("6:", constraints[7].dual_value)
 print("7:", constraints[8].dual_value)
 
-
+print('Pro kontrolu zda dual_value je spravne')
 #pro kontrolu 
 ##worst case opt for P2 (Q)
 t = cp.Variable(1)
@@ -52,4 +52,4 @@ prob.solve()
 
 # Print result.
 print("Vysledek obj funkce:", prob.value)
-print("Q:", p.value)
+print("Q*:", p.value)
